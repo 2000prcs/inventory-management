@@ -1,10 +1,10 @@
 <template>
   <Teleport to="body">
     <Transition name="modal">
-      <div v-if="isOpen" class="modal-overlay" @click="close">
+      <div v-if="isOpen && transaction" class="modal-overlay" @click="close">
         <div class="modal-container" @click.stop>
           <div class="modal-header">
-            <h3 class="modal-title">{{ t('profileDetails.title') }}</h3>
+            <h3 class="modal-title">{{ t('transaction.title') }}</h3>
             <button class="close-button" @click="close">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -13,51 +13,41 @@
           </div>
 
           <div class="modal-body">
-            <div class="profile-section">
-              <div class="avatar-section">
-                <div class="avatar-xl">
-                  {{ getInitials(currentUser.name) }}
-                </div>
-                <h4 class="profile-name">{{ currentUser.name }}</h4>
-                <p class="profile-job-title">{{ currentUser.jobTitle }}</p>
+            <div class="info-grid">
+              <div class="info-item">
+                <div class="info-label">{{ t('transaction.id') }}</div>
+                <div class="info-value id">{{ transaction.id.toString().padStart(3, '0') }}</div>
               </div>
 
-              <div class="info-grid">
-                <div class="info-item">
-                  <div class="info-label">{{ t('profileDetails.email') }}</div>
-                  <div class="info-value">{{ currentUser.email }}</div>
-                </div>
+              <div class="info-item">
+                <div class="info-label">{{ t('transaction.date') }}</div>
+                <div class="info-value">{{ formatDate(transaction.date) }}</div>
+              </div>
 
-                <div class="info-item">
-                  <div class="info-label">{{ t('profileDetails.department') }}</div>
-                  <div class="info-value">{{ currentUser.department }}</div>
-                </div>
+              <div class="info-item info-item-wide">
+                <div class="info-label">{{ t('transaction.description') }}</div>
+                <div class="info-value">{{ transaction.description }}</div>
+              </div>
 
-                <div class="info-item">
-                  <div class="info-label">{{ t('profileDetails.location') }}</div>
-                  <div class="info-value">{{ currentUser.location }}</div>
-                </div>
+              <div class="info-item">
+                <div class="info-label">{{ t('transaction.vendor') }}</div>
+                <div class="info-value">{{ transaction.vendor }}</div>
+              </div>
 
-                <div class="info-item">
-                  <div class="info-label">{{ t('profileDetails.phone') }}</div>
-                  <div class="info-value">{{ currentUser.phone }}</div>
-                </div>
+              <div class="info-item">
+                <div class="info-label">{{ t('transaction.category') }}</div>
+                <div class="info-value">{{ transaction.category }}</div>
+              </div>
 
-                <div class="info-item">
-                  <div class="info-label">{{ t('profileDetails.joinDate') }}</div>
-                  <div class="info-value">{{ formatDate(currentUser.joinDate) }}</div>
-                </div>
-
-                <div class="info-item">
-                  <div class="info-label">{{ t('profileDetails.employeeId') }}</div>
-                  <div class="info-value">CC-{{ currentUser.id.toString().padStart(5, '0') }}</div>
-                </div>
+              <div class="info-item">
+                <div class="info-label">{{ t('transaction.amount') }}</div>
+                <div class="info-value amount">{{ formatCurrency(transaction.amount, currentCurrency) }}</div>
               </div>
             </div>
           </div>
 
           <div class="modal-footer">
-            <button class="btn-secondary" @click="close">{{ t('profileDetails.close') }}</button>
+            <button class="btn-secondary" @click="close">{{ t('transaction.close') }}</button>
           </div>
         </div>
       </div>
@@ -66,16 +56,19 @@
 </template>
 
 <script setup>
-import { useAuth } from '../composables/useAuth'
 import { useI18n } from '../composables/useI18n'
+import { formatCurrency } from '../utils/currency'
 
-const { currentUser, getInitials } = useAuth()
-const { t, currentLocale } = useI18n()
+const { t, currentCurrency, currentLocale } = useI18n()
 
 const props = defineProps({
   isOpen: {
     type: Boolean,
     default: false
+  },
+  transaction: {
+    type: Object,
+    default: null
   }
 })
 
@@ -86,7 +79,9 @@ const close = () => {
 }
 
 const formatDate = (dateString) => {
+  if (!dateString) return '-'
   const date = new Date(dateString)
+  if (isNaN(date.getTime())) return '-'
   const locale = currentLocale.value === 'ja' ? 'ja-JP' : 'en-US'
   return date.toLocaleDateString(locale, {
     year: 'numeric',
@@ -115,7 +110,7 @@ const formatDate = (dateString) => {
   background: var(--color-surface);
   border-radius: 12px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-  max-width: 600px;
+  max-width: 520px;
   width: 100%;
   max-height: 90vh;
   overflow: hidden;
@@ -162,53 +157,14 @@ const formatDate = (dateString) => {
   padding: 2rem;
 }
 
-.profile-section {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.avatar-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--color-border);
-}
-
-.avatar-xl {
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary-darker) 100%);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 2rem;
-  letter-spacing: 0.025em;
-  box-shadow: 0 4px 12px rgba(219, 39, 119, 0.2);
-}
-
-.profile-name {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--color-text);
-  margin: 0;
-}
-
-.profile-job-title {
-  font-size: 1rem;
-  color: var(--color-text-muted);
-  margin: 0;
-}
-
 .info-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 1.5rem;
+}
+
+.info-item-wide {
+  grid-column: 1 / -1;
 }
 
 .info-item {
@@ -231,12 +187,21 @@ const formatDate = (dateString) => {
   font-weight: 500;
 }
 
+.info-value.id {
+  font-family: 'Monaco', 'Courier New', monospace;
+  color: var(--color-primary-dark);
+}
+
+.info-value.amount {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
 .modal-footer {
   padding: 1.5rem;
   border-top: 1px solid var(--color-border);
   display: flex;
   justify-content: flex-end;
-  gap: 0.75rem;
 }
 
 .btn-secondary {

@@ -7,6 +7,7 @@ export default {
     finance: 'Finance',
     demandForecast: 'Demand Forecast',
     restocking: 'Restocking',
+    reports: 'Reports',
     companyName: 'Catalyst Components',
     subtitle: 'Inventory Management System'
   },
@@ -227,7 +228,8 @@ export default {
     category: 'Category',
     orderStatus: 'Order Status',
     all: 'All',
-    allMonths: 'All Months'
+    allMonths: 'All Months',
+    resetAll: 'Reset all filters'
   },
 
   // Statuses
@@ -281,6 +283,72 @@ export default {
   },
 
   // Months
+  purchaseOrder: {
+    createTitle: 'Create Purchase Order',
+    viewTitle: 'Purchase Order',
+    createButton: 'Create PO',
+    viewButton: 'View PO',
+    item: 'Item',
+    sku: 'SKU',
+    shortage: 'Shortage',
+    supplier: 'Supplier',
+    supplierPlaceholder: 'Enter supplier name...',
+    quantity: 'Quantity',
+    unitCost: 'Unit Cost',
+    totalCost: 'Total Cost',
+    expectedDelivery: 'Expected Delivery',
+    notes: 'Notes',
+    notesPlaceholder: 'Optional notes...',
+    status: 'Status',
+    createdDate: 'Created',
+    submit: 'Create Purchase Order',
+    cancel: 'Cancel',
+    close: 'Close',
+    submitting: 'Creating...',
+    createError: 'Failed to create purchase order',
+    loadError: 'Failed to load purchase order',
+    requiredFields: 'Supplier, quantity and expected delivery are required'
+  },
+
+  transaction: {
+    title: 'Transaction Details',
+    id: 'Transaction ID',
+    description: 'Description',
+    vendor: 'Vendor',
+    date: 'Date',
+    amount: 'Amount',
+    category: 'Category',
+    close: 'Close'
+  },
+
+  reports: {
+    title: 'Performance Reports',
+    description: 'View quarterly performance metrics and monthly trends',
+    loading: 'Loading reports...',
+    loadError: 'Failed to load reports',
+    quarterlyPerformance: 'Quarterly Performance',
+    monthlyRevenueTrend: 'Monthly Revenue Trend',
+    monthOverMonth: 'Month-over-Month Analysis',
+    noData: 'No data for the selected filters',
+    totalRevenueYtd: 'Total Revenue (YTD)',
+    avgMonthlyRevenue: 'Avg Monthly Revenue',
+    totalOrdersYtd: 'Total Orders (YTD)',
+    bestQuarter: 'Best Performing Quarter',
+    notAvailable: 'N/A',
+    table: {
+      quarter: 'Quarter',
+      month: 'Month',
+      totalOrders: 'Total Orders',
+      orders: 'Orders',
+      totalRevenue: 'Total Revenue',
+      revenue: 'Revenue',
+      avgOrderValue: 'Avg Order Value',
+      fulfillmentRate: 'Fulfillment Rate',
+      change: 'Change',
+      growthRate: 'Growth Rate'
+    }
+  },
+
   months: {
     jan: 'Jan',
     feb: 'Feb',
@@ -334,7 +402,8 @@ export default {
     priority: 'Priority',
     dueDate: 'Due Date',
     addTask: 'Add Task',
-    noTasks: 'No tasks yet. Add your first task above!'
+    noTasks: 'No tasks yet. Add your first task above!',
+    deleteTask: 'Delete task'
   },
 
   // Language
