@@ -233,7 +233,7 @@ export default {
 }
 
 .trend-card {
-  background: white;
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 10px;
   padding: 1.5rem;
@@ -241,7 +241,7 @@ export default {
 }
 
 .trend-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
 }
 
 .increasing-card {
@@ -262,7 +262,7 @@ export default {
   gap: 1rem;
   margin-bottom: 1rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #f1f5f9;
+  border-bottom: 1px solid var(--color-surface-alt);
 }
 
 .trend-icon {
@@ -278,7 +278,7 @@ export default {
 }
 
 .increasing-card .trend-icon {
-  background: #d1fae5;
+  background: var(--color-success-bg);
   color: #059669;
 }
 
@@ -288,8 +288,8 @@ export default {
 }
 
 .decreasing-card .trend-icon {
-  background: #fee2e2;
-  color: #dc2626;
+  background: var(--color-danger-bg);
+  color: var(--color-danger);
 }
 
 .trend-label {
@@ -324,7 +324,7 @@ export default {
 }
 
 .trend-item:hover {
-  background: #f1f5f9;
+  background: var(--color-surface-alt);
 }
 
 .item-name {
@@ -353,7 +353,7 @@ export default {
 }
 
 .decreasing-card .item-change {
-  color: #dc2626;
+  color: var(--color-danger);
 }
 
 .item-change.neutral {

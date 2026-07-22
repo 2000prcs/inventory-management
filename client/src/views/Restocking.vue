@@ -303,7 +303,7 @@ export default {
 }
 
 .place-order-btn:disabled {
-  background: #cbd5e1;
+  background: var(--color-border-strong);
   cursor: not-allowed;
 }
 
@@ -315,8 +315,8 @@ export default {
 }
 
 .all-funded-banner {
-  background: #d1fae5;
-  color: #065f46;
+  background: var(--color-success-bg);
+  color: var(--color-success-text);
   border: 1px solid #a7f3d0;
   border-radius: 8px;
   padding: 0.75rem 1rem;
@@ -329,9 +329,9 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #d1fae5;
+  background: var(--color-success-bg);
   border: 1px solid #a7f3d0;
-  color: #065f46;
+  color: var(--color-success-text);
   padding: 0.875rem 1rem;
   border-radius: 8px;
   margin-bottom: 1rem;
@@ -341,7 +341,7 @@ export default {
 .dismiss-btn {
   background: none;
   border: none;
-  color: #065f46;
+  color: var(--color-success-text);
   font-size: 1.25rem;
   line-height: 1;
   cursor: pointer;
@@ -349,16 +349,16 @@ export default {
 }
 
 .skipped-row {
-  color: #94a3b8;
+  color: var(--color-text-subtle);
 }
 
 .skipped-row td {
-  color: #94a3b8;
+  color: var(--color-text-subtle);
 }
 
 .skipped-reason {
   font-style: italic;
   font-size: 0.813rem;
-  color: #94a3b8;
+  color: var(--color-text-subtle);
 }
 </style>

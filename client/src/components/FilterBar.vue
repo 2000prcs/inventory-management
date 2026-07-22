@@ -141,11 +141,11 @@ export default {
 
 .filter-select {
   padding: 0.4rem 0.75rem;
-  border: 1px solid #cbd5e1;
+  border: 1px solid var(--color-border-strong);
   border-radius: 6px;
   font-size: 0.813rem;
   color: var(--color-text);
-  background: white;
+  background: var(--color-surface);
   cursor: pointer;
   transition: all 0.2s;
   font-weight: 500;
@@ -153,7 +153,7 @@ export default {
 }
 
 .filter-select:hover {
-  border-color: #94a3b8;
+  border-color: var(--color-text-subtle);
 }
 
 .filter-select:focus {
@@ -167,7 +167,7 @@ export default {
   align-items: center;
   justify-content: center;
   padding: 0.4rem;
-  background: white;
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 6px;
   color: var(--color-text-muted);

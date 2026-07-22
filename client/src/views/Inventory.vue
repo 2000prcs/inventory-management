@@ -266,14 +266,14 @@ export default {
   left: 0.75rem;
   width: 18px;
   height: 18px;
-  color: #94a3b8;
+  color: var(--color-text-subtle);
   pointer-events: none;
 }
 
 .search-input {
   width: 100%;
   padding: 0.5rem 2.5rem 0.5rem 2.5rem;
-  border: 1px solid #cbd5e1;
+  border: 1px solid var(--color-border-strong);
   border-radius: 8px;
   font-size: 0.875rem;
   color: var(--color-text);
@@ -284,12 +284,12 @@ export default {
 .search-input:focus {
   outline: none;
   border-color: var(--color-primary);
-  background: white;
+  background: var(--color-surface);
   box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.1);
 }
 
 .search-input::placeholder {
-  color: #94a3b8;
+  color: var(--color-text-subtle);
 }
 
 .clear-search {
@@ -302,7 +302,7 @@ export default {
   background: transparent;
   border: none;
   border-radius: 4px;
-  color: #94a3b8;
+  color: var(--color-text-subtle);
   cursor: pointer;
   transition: all 0.2s;
 }

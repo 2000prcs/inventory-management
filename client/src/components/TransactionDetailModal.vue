@@ -107,7 +107,7 @@ const formatDate = (dateString) => {
 }
 
 .modal-container {
-  background: white;
+  background: var(--color-surface);
   border-radius: 12px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
   max-width: 520px;
@@ -147,7 +147,7 @@ const formatDate = (dateString) => {
 }
 
 .close-button:hover {
-  background: #f1f5f9;
+  background: var(--color-surface-alt);
   color: var(--color-text);
 }
 
@@ -206,12 +206,12 @@ const formatDate = (dateString) => {
 
 .btn-secondary {
   padding: 0.625rem 1.25rem;
-  background: #f1f5f9;
+  background: var(--color-surface-alt);
   border: 1px solid var(--color-border);
   border-radius: 8px;
   font-weight: 500;
   font-size: 0.875rem;
-  color: #334155;
+  color: var(--color-text-muted);
   cursor: pointer;
   transition: all 0.15s ease;
   font-family: inherit;
@@ -219,7 +219,7 @@ const formatDate = (dateString) => {
 
 .btn-secondary:hover {
   background: var(--color-border);
-  border-color: #cbd5e1;
+  border-color: var(--color-border-strong);
 }
 
 /* Modal transition animations */

@@ -299,7 +299,7 @@ const formatDate = (dateString) => {
 }
 
 .modal-container {
-  background: white;
+  background: var(--color-surface);
   border-radius: 12px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
   max-width: 600px;
@@ -339,7 +339,7 @@ const formatDate = (dateString) => {
 }
 
 .close-button:hover {
-  background: #f1f5f9;
+  background: var(--color-surface-alt);
   color: var(--color-text);
 }
 
@@ -383,8 +383,8 @@ const formatDate = (dateString) => {
   border-radius: 6px;
   font-size: 0.813rem;
   font-weight: 700;
-  background: #fecaca;
-  color: #991b1b;
+  background: var(--color-danger-bg);
+  color: var(--color-danger-text);
   white-space: nowrap;
 }
 
@@ -397,8 +397,8 @@ const formatDate = (dateString) => {
 .form-error {
   padding: 0.75rem 1rem;
   background: #fef2f2;
-  border: 1px solid #fecaca;
-  color: #991b1b;
+  border: 1px solid var(--color-danger-bg);
+  color: var(--color-danger-text);
   border-radius: 8px;
   font-size: 0.875rem;
   font-weight: 500;
@@ -505,8 +505,8 @@ const formatDate = (dateString) => {
   border-radius: 6px;
   font-size: 0.75rem;
   font-weight: 600;
-  background: #fef3c7;
-  color: #92400e;
+  background: var(--color-warning-bg);
+  color: var(--color-warning-text);
 }
 
 .loading,
@@ -517,7 +517,7 @@ const formatDate = (dateString) => {
 }
 
 .error {
-  color: #dc2626;
+  color: var(--color-danger);
 }
 
 .modal-footer {
@@ -530,12 +530,12 @@ const formatDate = (dateString) => {
 
 .btn-secondary {
   padding: 0.625rem 1.25rem;
-  background: #f1f5f9;
+  background: var(--color-surface-alt);
   border: 1px solid var(--color-border);
   border-radius: 8px;
   font-weight: 500;
   font-size: 0.875rem;
-  color: #334155;
+  color: var(--color-text-muted);
   cursor: pointer;
   transition: all 0.15s ease;
   font-family: inherit;
@@ -543,7 +543,7 @@ const formatDate = (dateString) => {
 
 .btn-secondary:hover {
   background: var(--color-border);
-  border-color: #cbd5e1;
+  border-color: var(--color-border-strong);
 }
 
 .btn-primary {

@@ -764,7 +764,7 @@ export default {
 .section-title {
   font-size: 1rem;
   font-weight: 600;
-  color: #475569;
+  color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 1rem;
@@ -777,7 +777,7 @@ export default {
 }
 
 .kpi-card {
-  background: white;
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 10px;
   padding: 1rem;
@@ -812,7 +812,7 @@ export default {
 .kpi-progress-bar {
   width: 100%;
   height: 6px;
-  background: #f1f5f9;
+  background: var(--color-surface-alt);
   border-radius: 3px;
   overflow: hidden;
 }
@@ -866,7 +866,7 @@ export default {
   align-items: center;
   gap: 0.625rem;
   font-size: 0.875rem;
-  color: #475569;
+  color: var(--color-text-muted);
 }
 
 .legend-dot {
@@ -924,7 +924,7 @@ export default {
   align-items: center;
   gap: 0.5rem;
   font-size: 0.875rem;
-  color: #475569;
+  color: var(--color-text-muted);
   font-weight: 500;
 }
 
@@ -989,7 +989,7 @@ export default {
   min-width: 120px;
   font-size: 0.875rem;
   font-weight: 600;
-  color: #475569;
+  color: var(--color-text-muted);
   flex-shrink: 0;
 }
 
@@ -1013,7 +1013,8 @@ export default {
 .h-bar-value {
   font-size: 0.813rem;
   font-weight: 700;
-  color: white;
+  /* Dark text on the bright pink fill - white only reaches ~2.2:1 here */
+  color: var(--color-bg);
 }
 
 .line-chart {
@@ -1028,7 +1029,7 @@ export default {
   justify-content: space-between;
   padding-right: 1rem;
   font-size: 0.75rem;
-  color: #94a3b8;
+  color: var(--color-text-subtle);
   border-right: 1px solid var(--color-border);
 }
 
@@ -1081,7 +1082,7 @@ export default {
 }
 
 .line-bar.empty-bar:hover {
-  background: #cbd5e1;
+  background: var(--color-border-strong);
   transform: none;
 }
 
@@ -1095,7 +1096,7 @@ export default {
 .no-data {
   padding: 2rem;
   text-align: center;
-  color: #94a3b8;
+  color: var(--color-text-subtle);
   font-size: 0.875rem;
 }
 
@@ -1161,7 +1162,7 @@ export default {
 
 .task-add-btn {
   padding: 0.75rem 1.5rem;
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary-dark) 100%);
   color: white;
   border: none;
   border-radius: 8px;
@@ -1205,7 +1206,7 @@ export default {
 
 .task-item:hover {
   border-color: var(--color-border);
-  background: white;
+  background: var(--color-surface);
 }
 
 .task-item.completed {
@@ -1214,7 +1215,7 @@ export default {
 
 .task-item.completed .task-text {
   text-decoration: line-through;
-  color: #94a3b8;
+  color: var(--color-text-subtle);
 }
 
 .task-checkbox {
@@ -1250,7 +1251,7 @@ export default {
 }
 
 .task-delete-btn:hover {
-  background: #dc2626;
+  background: var(--color-danger);
   transform: scale(1.1);
 }
 
@@ -1282,7 +1283,7 @@ export default {
 }
 
 .po-button.view:hover {
-  background: #475569;
+  background: var(--color-text-muted);
   transform: translateY(-1px);
   box-shadow: 0 2px 4px rgba(100, 116, 139, 0.3);
 }
