@@ -36,6 +36,10 @@ jobs:
         uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Pin the API model ID. Left unset, the CLI resolved to the
+          # "claude-opus-4-8[1m]" 1M-context variant, which the API rejected
+          # immediately (run ended in 438ms, 1 turn, $0 billed).
+          claude_args: '--model claude-opus-4-8'
           plugin_marketplaces: 'https://github.com/anthropics/claude-code.git'
           plugins: 'code-review@claude-code-plugins'
           prompt: '/code-review:code-review ${{ github.repository }}/pull/${{ github.event.pull_request.number }}'
