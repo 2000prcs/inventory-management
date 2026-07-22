@@ -244,14 +244,14 @@ export default {
 .budget-amount {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #0f172a;
+  color: var(--color-text);
 }
 
 .budget-slider {
   width: 100%;
   height: 6px;
   border-radius: 999px;
-  background: #e2e8f0;
+  background: var(--color-border);
   appearance: none;
   -webkit-appearance: none;
   outline: none;
@@ -264,7 +264,7 @@ export default {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #3b82f6;
+  background: var(--color-primary);
   border: 3px solid white;
   box-shadow: 0 1px 3px rgba(15, 23, 42, 0.3);
   cursor: pointer;
@@ -274,7 +274,7 @@ export default {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #3b82f6;
+  background: var(--color-primary);
   border: 3px solid white;
   box-shadow: 0 1px 3px rgba(15, 23, 42, 0.3);
   cursor: pointer;
@@ -283,11 +283,11 @@ export default {
 .budget-slider::-moz-range-track {
   height: 6px;
   border-radius: 999px;
-  background: #e2e8f0;
+  background: var(--color-border);
 }
 
 .place-order-btn {
-  background: #3b82f6;
+  background: var(--color-primary-dark);
   color: white;
   border: none;
   border-radius: 8px;
@@ -299,7 +299,7 @@ export default {
 }
 
 .place-order-btn:hover:not(:disabled) {
-  background: #2563eb;
+  background: var(--color-primary-darker);
 }
 
 .place-order-btn:disabled {
@@ -310,7 +310,7 @@ export default {
 .empty-state {
   text-align: center;
   padding: 2rem;
-  color: #64748b;
+  color: var(--color-text-muted);
   font-size: 0.938rem;
 }
 

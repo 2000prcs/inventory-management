@@ -180,14 +180,14 @@ export default {
       const change = forecast.forecasted_demand - forecast.current_demand
       const changePercent = Math.abs((change / forecast.current_demand) * 100)
 
-      // If change is within ±2%, consider it stable and show blue
+      // If change is within ±2%, consider it stable and show the brand pink accent
       if (changePercent <= 2) {
-        return '#3b82f6' // Blue for stable
+        return 'var(--color-primary)'
       }
 
-      if (change > 0) return '#10b981' // Green for increasing
-      if (change < 0) return '#ef4444' // Red for decreasing
-      return '#3b82f6' // Blue for no change
+      if (change > 0) return 'var(--color-success)' // Green for increasing
+      if (change < 0) return 'var(--color-danger)' // Red for decreasing
+      return 'var(--color-primary)'
     }
 
     const translatePeriod = (period) => {
@@ -234,7 +234,7 @@ export default {
 
 .trend-card {
   background: white;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--color-border);
   border-radius: 10px;
   padding: 1.5rem;
   transition: all 0.2s ease;
@@ -245,15 +245,15 @@ export default {
 }
 
 .increasing-card {
-  border-left: 4px solid #10b981;
+  border-left: 4px solid var(--color-success);
 }
 
 .stable-card {
-  border-left: 4px solid #3b82f6;
+  border-left: 4px solid var(--color-primary);
 }
 
 .decreasing-card {
-  border-left: 4px solid #ef4444;
+  border-left: 4px solid var(--color-danger);
 }
 
 .trend-header {
@@ -283,8 +283,8 @@ export default {
 }
 
 .stable-card .trend-icon {
-  background: #dbeafe;
-  color: #2563eb;
+  background: var(--color-primary-100);
+  color: var(--color-primary-dark);
 }
 
 .decreasing-card .trend-icon {
@@ -295,7 +295,7 @@ export default {
 .trend-label {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #64748b;
+  color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -303,7 +303,7 @@ export default {
 .trend-count {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #0f172a;
+  color: var(--color-text);
   margin-top: 0.25rem;
 }
 
@@ -318,7 +318,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 0.75rem;
-  background: #f8fafc;
+  background: var(--color-bg);
   border-radius: 6px;
   transition: background 0.2s;
 }
@@ -329,7 +329,7 @@ export default {
 
 .item-name {
   font-size: 0.875rem;
-  color: #0f172a;
+  color: var(--color-text);
   font-weight: 500;
   flex: 1;
   overflow: hidden;
@@ -349,7 +349,7 @@ export default {
 }
 
 .stable-card .item-change {
-  color: #3b82f6;
+  color: var(--color-primary);
 }
 
 .decreasing-card .item-change {
@@ -357,12 +357,12 @@ export default {
 }
 
 .item-change.neutral {
-  color: #64748b;
+  color: var(--color-text-muted);
 }
 
 .more-items {
   font-size: 0.813rem;
-  color: #64748b;
+  color: var(--color-text-muted);
   font-style: italic;
   text-align: center;
   padding: 0.5rem;

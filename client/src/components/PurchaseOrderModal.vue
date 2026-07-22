@@ -315,20 +315,20 @@ const formatDate = (dateString) => {
   align-items: center;
   justify-content: space-between;
   padding: 1.5rem;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .modal-title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #0f172a;
+  color: var(--color-text);
   letter-spacing: -0.025em;
 }
 
 .close-button {
   background: none;
   border: none;
-  color: #64748b;
+  color: var(--color-text-muted);
   cursor: pointer;
   padding: 0.5rem;
   display: flex;
@@ -340,7 +340,7 @@ const formatDate = (dateString) => {
 
 .close-button:hover {
   background: #f1f5f9;
-  color: #0f172a;
+  color: var(--color-text);
 }
 
 .modal-body {
@@ -355,7 +355,7 @@ const formatDate = (dateString) => {
   justify-content: space-between;
   gap: 1rem;
   padding-bottom: 1.25rem;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid var(--color-border);
   margin-bottom: 1.5rem;
 }
 
@@ -367,13 +367,13 @@ const formatDate = (dateString) => {
 .item-name {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #0f172a;
+  color: var(--color-text);
   margin: 0 0 0.375rem 0;
 }
 
 .item-sku {
   font-size: 0.875rem;
-  color: #64748b;
+  color: var(--color-text-muted);
   font-family: 'Monaco', 'Courier New', monospace;
 }
 
@@ -421,16 +421,16 @@ const formatDate = (dateString) => {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #64748b;
+  color: var(--color-text-muted);
 }
 
 .form-input,
 .form-textarea {
   padding: 0.625rem 0.75rem;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   font-size: 0.938rem;
-  color: #0f172a;
+  color: var(--color-text);
   font-family: inherit;
   transition: border-color 0.15s ease;
 }
@@ -438,7 +438,7 @@ const formatDate = (dateString) => {
 .form-input:focus,
 .form-textarea:focus {
   outline: none;
-  border-color: #3b82f6;
+  border-color: var(--color-primary);
 }
 
 .form-textarea {
@@ -450,15 +450,15 @@ const formatDate = (dateString) => {
   align-items: center;
   justify-content: space-between;
   padding: 1rem 1.25rem;
-  background: #eff6ff;
-  border: 1px solid #93c5fd;
+  background: var(--color-primary-50);
+  border: 1px solid var(--color-primary-light);
   border-radius: 10px;
 }
 
 .total-cost-label {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #1e40af;
+  color: var(--color-primary-darker);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -466,7 +466,7 @@ const formatDate = (dateString) => {
 .total-cost-value {
   font-size: 1.375rem;
   font-weight: 700;
-  color: #0f172a;
+  color: var(--color-text);
 }
 
 .info-grid {
@@ -490,12 +490,12 @@ const formatDate = (dateString) => {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #64748b;
+  color: var(--color-text-muted);
 }
 
 .info-value {
   font-size: 0.938rem;
-  color: #0f172a;
+  color: var(--color-text);
   font-weight: 500;
 }
 
@@ -513,7 +513,7 @@ const formatDate = (dateString) => {
 .error {
   padding: 2rem;
   text-align: center;
-  color: #64748b;
+  color: var(--color-text-muted);
 }
 
 .error {
@@ -522,7 +522,7 @@ const formatDate = (dateString) => {
 
 .modal-footer {
   padding: 1.5rem;
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid var(--color-border);
   display: flex;
   justify-content: flex-end;
   gap: 0.75rem;
@@ -531,7 +531,7 @@ const formatDate = (dateString) => {
 .btn-secondary {
   padding: 0.625rem 1.25rem;
   background: #f1f5f9;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   font-weight: 500;
   font-size: 0.875rem;
@@ -542,13 +542,13 @@ const formatDate = (dateString) => {
 }
 
 .btn-secondary:hover {
-  background: #e2e8f0;
+  background: var(--color-border);
   border-color: #cbd5e1;
 }
 
 .btn-primary {
   padding: 0.625rem 1.25rem;
-  background: #3b82f6;
+  background: var(--color-primary-dark);
   border: none;
   border-radius: 8px;
   font-weight: 600;
@@ -560,11 +560,11 @@ const formatDate = (dateString) => {
 }
 
 .btn-primary:hover:not(:disabled) {
-  background: #2563eb;
+  background: var(--color-primary-darker);
 }
 
 .btn-primary:disabled {
-  background: #93c5fd;
+  background: var(--color-primary-light);
   cursor: not-allowed;
 }
 

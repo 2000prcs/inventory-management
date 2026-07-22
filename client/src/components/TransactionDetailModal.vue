@@ -123,20 +123,20 @@ const formatDate = (dateString) => {
   align-items: center;
   justify-content: space-between;
   padding: 1.5rem;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .modal-title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #0f172a;
+  color: var(--color-text);
   letter-spacing: -0.025em;
 }
 
 .close-button {
   background: none;
   border: none;
-  color: #64748b;
+  color: var(--color-text-muted);
   cursor: pointer;
   padding: 0.5rem;
   display: flex;
@@ -148,7 +148,7 @@ const formatDate = (dateString) => {
 
 .close-button:hover {
   background: #f1f5f9;
-  color: #0f172a;
+  color: var(--color-text);
 }
 
 .modal-body {
@@ -178,18 +178,18 @@ const formatDate = (dateString) => {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #64748b;
+  color: var(--color-text-muted);
 }
 
 .info-value {
   font-size: 0.938rem;
-  color: #0f172a;
+  color: var(--color-text);
   font-weight: 500;
 }
 
 .info-value.id {
   font-family: 'Monaco', 'Courier New', monospace;
-  color: #2563eb;
+  color: var(--color-primary-dark);
 }
 
 .info-value.amount {
@@ -199,7 +199,7 @@ const formatDate = (dateString) => {
 
 .modal-footer {
   padding: 1.5rem;
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid var(--color-border);
   display: flex;
   justify-content: flex-end;
 }
@@ -207,7 +207,7 @@ const formatDate = (dateString) => {
 .btn-secondary {
   padding: 0.625rem 1.25rem;
   background: #f1f5f9;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   font-weight: 500;
   font-size: 0.875rem;
@@ -218,7 +218,7 @@ const formatDate = (dateString) => {
 }
 
 .btn-secondary:hover {
-  background: #e2e8f0;
+  background: var(--color-border);
   border-color: #cbd5e1;
 }
 
