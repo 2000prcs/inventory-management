@@ -168,6 +168,12 @@
       :cost-data="selectedCostData"
       @close="showCostModal = false"
     />
+
+    <TransactionDetailModal
+      :is-open="showTransactionModal"
+      :transaction="selectedTransaction"
+      @close="showTransactionModal = false"
+    />
   </div>
 </template>
 
@@ -178,11 +184,13 @@ import { useFilters } from '../composables/useFilters'
 import { useI18n } from '../composables/useI18n'
 import { formatCurrency as formatCurrencyUtil } from '../utils/currency'
 import CostDetailModal from '../components/CostDetailModal.vue'
+import TransactionDetailModal from '../components/TransactionDetailModal.vue'
 
 export default {
   name: 'Spending',
   components: {
-    CostDetailModal
+    CostDetailModal,
+    TransactionDetailModal
   },
   setup() {
     const { t, currentCurrency } = useI18n()
@@ -197,6 +205,8 @@ export default {
     // Modal state
     const showCostModal = ref(false)
     const selectedCostData = ref(null)
+    const showTransactionModal = ref(false)
+    const selectedTransaction = ref(null)
 
     // Use shared filters
     const { selectedPeriod, getCurrentFilters } = useFilters()
@@ -230,10 +240,12 @@ export default {
       if (selectedPeriod.value === 'all') {
         return allTransactions.value
       }
-      // Filter transactions by selected month
+      // Filter transactions by selected month. toISOString() throws on an
+      // invalid date, so the date is validated before it is called.
       return allTransactions.value.filter(t => {
-        const transactionMonth = new Date(t.date).toISOString().slice(0, 7)
-        return transactionMonth === selectedPeriod.value
+        const date = new Date(t.date)
+        if (isNaN(date.getTime())) return false
+        return date.toISOString().slice(0, 7) === selectedPeriod.value
       })
     })
 
@@ -268,10 +280,12 @@ export default {
         return allOrders.value
       }
 
-      // Filter orders by selected month
+      // Filter orders by selected month. toISOString() throws on an invalid
+      // date, so the date is validated before it is called.
       return allOrders.value.filter(order => {
-        const orderMonth = new Date(order.order_date).toISOString().slice(0, 7)
-        return orderMonth === selectedPeriod.value
+        const date = new Date(order.order_date)
+        if (isNaN(date.getTime())) return false
+        return date.toISOString().slice(0, 7) === selectedPeriod.value
       })
     })
 
@@ -448,8 +462,8 @@ export default {
     }
 
     const handleTransactionClick = (transaction) => {
-      console.log('Transaction clicked:', transaction)
-      alert(`Transaction Details:\n\nID: ${transaction.id}\nDescription: ${transaction.description}\nVendor: ${transaction.vendor}\nDate: ${formatDateShort(transaction.date)}\nAmount: $${transaction.amount.toLocaleString()}`)
+      selectedTransaction.value = transaction
+      showTransactionModal.value = true
     }
 
     const showCostDetail = (monthData) => {
@@ -485,6 +499,9 @@ export default {
       showCostModal,
       selectedCostData,
       showCostDetail,
+      showTransactionModal,
+      selectedTransaction,
+      currentCurrency,
       Math
     }
   }

@@ -171,3 +171,77 @@ class TestDashboardEndpoints:
 
         # Allow small floating point differences
         assert abs(dashboard_data["total_inventory_value"] - expected_value) < 0.01
+
+
+class TestDashboardKPIs:
+    """Test suite for the derived headline KPIs on the dashboard summary."""
+
+    def test_summary_includes_kpi_fields(self, client):
+        """Test that the summary exposes the headline KPI fields."""
+        data = client.get("/api/dashboard/summary").json()
+
+        for field in [
+            "orders_fulfilled",
+            "total_orders",
+            "fill_rate",
+            "avg_processing_days",
+            "inventory_turnover",
+        ]:
+            assert field in data
+
+    def test_orders_fulfilled_matches_delivered_orders(self, client):
+        """Test that orders_fulfilled equals the delivered order count."""
+        orders = client.get("/api/orders").json()
+        delivered = len([o for o in orders if o["status"] == "Delivered"])
+
+        data = client.get("/api/dashboard/summary").json()
+        assert data["orders_fulfilled"] == delivered
+
+    def test_total_orders_matches_orders_endpoint(self, client):
+        """Test that total_orders matches the full order list."""
+        orders = client.get("/api/orders").json()
+        data = client.get("/api/dashboard/summary").json()
+        assert data["total_orders"] == len(orders)
+
+    def test_fill_rate_excludes_only_backordered(self, client):
+        """Test that fill rate counts everything except backordered as filled."""
+        orders = client.get("/api/orders").json()
+        backordered = len([o for o in orders if o["status"] == "Backordered"])
+        expected = round(((len(orders) - backordered) / len(orders)) * 100, 1)
+
+        data = client.get("/api/dashboard/summary").json()
+        assert data["fill_rate"] == expected
+
+    def test_fill_rate_is_a_percentage(self, client):
+        """Test that fill rate stays within 0-100."""
+        data = client.get("/api/dashboard/summary").json()
+        assert 0 <= data["fill_rate"] <= 100
+
+    def test_avg_processing_days_is_positive(self, client):
+        """Test that average processing time is a sane positive number."""
+        data = client.get("/api/dashboard/summary").json()
+        assert data["avg_processing_days"] > 0
+
+    def test_kpis_respond_to_warehouse_filter(self, client):
+        """Test that KPIs are recalculated for a filtered order set."""
+        unfiltered = client.get("/api/dashboard/summary").json()
+        filtered = client.get("/api/dashboard/summary?warehouse=Tokyo").json()
+
+        tokyo_orders = client.get("/api/orders?warehouse=Tokyo").json()
+        assert filtered["total_orders"] == len(tokyo_orders)
+        assert filtered["total_orders"] < unfiltered["total_orders"]
+
+    def test_kpis_respond_to_status_filter(self, client):
+        """Test that filtering to delivered orders yields a 100% fill rate."""
+        data = client.get("/api/dashboard/summary?status=Delivered").json()
+        assert data["fill_rate"] == 100.0
+        assert data["orders_fulfilled"] == data["total_orders"]
+
+    def test_kpis_handle_empty_order_set(self, client):
+        """Test that KPIs degrade gracefully when nothing matches."""
+        data = client.get("/api/dashboard/summary?warehouse=Atlantis").json()
+
+        assert data["total_orders"] == 0
+        assert data["orders_fulfilled"] == 0
+        assert data["fill_rate"] == 0
+        assert data["avg_processing_days"] == 0

@@ -7,6 +7,7 @@ export default {
     finance: '財務',
     demandForecast: '需要予測',
     restocking: '補充',
+    reports: 'レポート',
     companyName: '触媒コンポーネンツ',
     subtitle: '在庫管理システム'
   },
@@ -227,7 +228,8 @@ export default {
     category: 'カテゴリ',
     orderStatus: '注文ステータス',
     all: 'すべて',
-    allMonths: 'すべての月'
+    allMonths: 'すべての月',
+    resetAll: 'すべてのフィルターをリセット'
   },
 
   // Statuses
@@ -281,6 +283,72 @@ export default {
   },
 
   // Months
+  purchaseOrder: {
+    createTitle: '発注書を作成',
+    viewTitle: '発注書',
+    createButton: '発注書作成',
+    viewButton: '発注書表示',
+    item: '品目',
+    sku: 'SKU',
+    shortage: '不足数',
+    supplier: 'サプライヤー',
+    supplierPlaceholder: 'サプライヤー名を入力...',
+    quantity: '数量',
+    unitCost: '単価',
+    totalCost: '合計金額',
+    expectedDelivery: '予定納期',
+    notes: '備考',
+    notesPlaceholder: '備考（任意）...',
+    status: 'ステータス',
+    createdDate: '作成日',
+    submit: '発注書を作成',
+    cancel: 'キャンセル',
+    close: '閉じる',
+    submitting: '作成中...',
+    createError: '発注書の作成に失敗しました',
+    loadError: '発注書の読み込みに失敗しました',
+    requiredFields: 'サプライヤー、数量、予定納期は必須です'
+  },
+
+  transaction: {
+    title: '取引の詳細',
+    id: '取引ID',
+    description: '説明',
+    vendor: 'ベンダー',
+    date: '日付',
+    amount: '金額',
+    category: 'カテゴリ',
+    close: '閉じる'
+  },
+
+  reports: {
+    title: 'パフォーマンスレポート',
+    description: '四半期のパフォーマンス指標と月次トレンドを表示',
+    loading: 'レポートを読み込み中...',
+    loadError: 'レポートの読み込みに失敗しました',
+    quarterlyPerformance: '四半期パフォーマンス',
+    monthlyRevenueTrend: '月次収益トレンド',
+    monthOverMonth: '前月比分析',
+    noData: '選択したフィルターに該当するデータがありません',
+    totalRevenueYtd: '年初来総収益',
+    avgMonthlyRevenue: '月平均収益',
+    totalOrdersYtd: '年初来総注文数',
+    bestQuarter: '最高実績四半期',
+    notAvailable: '該当なし',
+    table: {
+      quarter: '四半期',
+      month: '月',
+      totalOrders: '総注文数',
+      orders: '注文数',
+      totalRevenue: '総収益',
+      revenue: '収益',
+      avgOrderValue: '平均注文額',
+      fulfillmentRate: '履行率',
+      change: '増減',
+      growthRate: '成長率'
+    }
+  },
+
   months: {
     jan: '1月',
     feb: '2月',
@@ -334,7 +402,8 @@ export default {
     priority: '優先度',
     dueDate: '期限',
     addTask: 'タスクを追加',
-    noTasks: 'タスクがありません。上記からタスクを追加してください！'
+    noTasks: 'タスクがありません。上記からタスクを追加してください！',
+    deleteTask: 'タスクを削除'
   },
 
   // Language
